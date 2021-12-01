@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Posts from './components/posts';
+import Topbar from './components/topbar'
+import PostContext from './Context';
+import { useState } from 'react';
 
 function App() {
+  //create an initial state to keep track of whether a post has been made
+  const [posted, setPosted] = useState({ isPosted: false })
+
+  const title = "M£$$AGE B0A&D"
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="font-mono text-gray-700 w-full">
+      <PostContext.Provider value={[posted, setPosted]}>
+        <Topbar />
+        <Posts />
+      </PostContext.Provider>
+    </div >
   );
 }
 
